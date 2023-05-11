@@ -1,0 +1,14 @@
+{% extends "catalogo/base.html" %}
+
+{% block contenido %}
+<section>
+  <div>
+    <h1>Lista de proveedores de Gamers Computers</h1>
+    <ul>
+    {% for proveedor in proveedores %}
+      <li>{{ proveedor.empresa }}</li>
+    {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock contenido %}

@@ -1,0 +1,14 @@
+{% extends "catalogo/base.html" %}
+
+{% block contenido %}
+<section>
+  <div>
+    <h1>Lista de computadoras para videojuegos</h1>
+    <ul>
+    {% for computadora in computadoras %}
+      <li>{{ computadora.tipo_computadora }}, {{ computadora.marca }}, {{ computadora.modelo }}</li>
+    {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock contenido %}

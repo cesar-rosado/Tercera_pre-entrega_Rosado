@@ -1,0 +1,14 @@
+{% extends "catalogo/base.html" %}
+
+{% block contenido %}
+<section>
+  <div>
+    <h1>Lista de accesorios para computadoras</h1>
+    <ul>
+    {% for accesorio in accesorios %}
+      <li>{{ accesorio.tipo_accesorio }}, {{ accesorio.marca }}, {{ accesorio.modelo }}</li>
+    {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock contenido %}

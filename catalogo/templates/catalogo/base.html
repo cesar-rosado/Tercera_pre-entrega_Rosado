@@ -24,9 +24,11 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-                <a class="navbar-brand" href="">Estudiantes</a>
-                <a class="navbar-brand" href="#!">Directores</a>
-                <a class="btn btn-primary" href="#signup">INICIAR</a>
+                <a class="navbar-brand" href="{% url 'clientes' %}">Clientes</a>
+                <a class="navbar-brand" href="{% url 'computadoras' %}">Computadoras</a>
+                <a class="navbar-brand" href="{% url 'accesorios' %}">Accesorios</a>
+                <a class="navbar-brand" href="{% url 'proveedores' %}">Proveedores</a>
+                <a class="btn btn-primary" href="#signup">Registro</a>
             </div>
         </nav>
         
