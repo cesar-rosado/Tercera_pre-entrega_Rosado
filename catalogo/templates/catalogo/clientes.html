@@ -4,9 +4,10 @@
 <section>
   <div>
     <h1>Lista de clientes de Gamers Computers</h1>
+    <a href="{% url 'crear_cliente' %}">Crear Cliente</a>
     <ul>
     {% for cliente in clientes %}
-      <li>{{ cliente.nombre }}, {{ cliente.apellido }}</li>
+      <li>{{ cliente.nombre }} {{ cliente.apellido }}</li>
     {% endfor %}
     </ul>
   </div>

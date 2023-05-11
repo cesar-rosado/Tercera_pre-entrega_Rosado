@@ -22,10 +22,7 @@ from proyecto_web_django.views import inicio, saludar, saludar_con_html
 urlpatterns = [
     path("", inicio, name="inicio"),
     path('admin/', admin.site.urls),
-    path("clientes/", include("catalogo.urls")),
-    path("computadoras/", include("catalogo.urls")),
-    path("accesorios/", include("catalogo.urls")),
-    path("proveedores/", include("catalogo.urls")),
+    path("catalogos/", include("catalogo.urls")),
     path("saludo/", saludar),
     path("saludo-html/", saludar_con_html), 
 ]
