@@ -1,0 +1,10 @@
+{% extends "catalogo/base.html" %}
+
+{% block contenido %}
+<form action="{% url "crear_accesorio"%}" method="post">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    {{ formulario.error }}
+    <input type="submit" value="Enviar">
+</form> 
+{% endblock contenido %}

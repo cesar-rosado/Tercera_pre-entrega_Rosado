@@ -83,3 +83,22 @@ def crear_cliente(request):
         context={'formulario' : formulario},
     )
     return http_response
+
+########################################################################################################
+#CREAR BUSCADORES
+
+def buscar_cliente(request):
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+        cliente = Cliente.objects.filter(apellido__icontains=busqueda)
+        contexto = {
+        "cliente": cliente,
+        }
+        
+    http_response = render(
+        request=request,
+        template_name='catalogo/clientes.html',
+        context=contexto,
+    )
+    return http_response
