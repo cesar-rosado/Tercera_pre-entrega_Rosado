@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-from catalogo.forms import ClienteFormulario
+from catalogo.forms import ClienteFormulario, ComputadoraFormulario, AccesorioFormulario, ProveedorFormulario
 from catalogo.models import Cliente, Computadora, Accesorio, Proveedor
 
 # Create your views here.
@@ -84,6 +84,33 @@ def crear_cliente(request):
     )
     return http_response
 
+def crear_computadora(request):
+    if request.method == "POST":
+        formulario = ComputadoraFormulario(request.POST)
+        
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            tipo_computadora = data["tipo_computadora"]
+            marca = data["marca"]
+            modelo = data["modelo"]
+            procesador = data["procesador"]
+            ram = data["ram"]
+            hhd = data["hhd"]
+            computadora = Computadora(tipo_computadora=tipo_computadora, marca=marca, modelo=modelo, procesador=procesador, ram=ram, hhd=hhd)
+            computadora.save()
+            
+            url_exitosa = reverse('computadoras') 
+            return redirect(url_exitosa)
+               
+    else: # GET
+        formulario = ComputadoraFormulario()
+    http_response = render(
+        request=request,
+        template_name='catalogo/formulario_computadoras.html',
+        context={'formulario' : formulario},
+    )
+    return http_response
+
 ########################################################################################################
 #CREAR BUSCADORES
 
@@ -99,6 +126,22 @@ def buscar_cliente(request):
     http_response = render(
         request=request,
         template_name='catalogo/clientes.html',
+        context=contexto,
+    )
+    return http_response
+
+def buscar_computadora(request):
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+        computadora = Computadora.objects.filter(marca__icontains=busqueda)
+        contexto = {
+        "computadora": computadora,
+        }
+        
+    http_response = render(
+        request=request,
+        template_name='catalogo/computadoras.html',
         context=contexto,
     )
     return http_response
